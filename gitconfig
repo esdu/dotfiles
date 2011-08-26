@@ -1,0 +1,49 @@
+[user]
+	name = Eddie Du
+	email = sj.eddie@gmail.com
+[color]
+  ui = auto
+[alias]
+
+  # misc
+  stats = shortlog -sne
+
+  # regreting the past.. no more!
+  oops = commit --amend
+  fix = commit -a --amend -C HEAD
+
+  undo = reset --soft HEAD^
+
+  # commit away
+  au = add -u .
+  cm = commit -m
+  done = commit -a -m
+
+  # soft resets
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+
+  # hard resets
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh1 = reset HEAD^^ --hard
+
+  # shortcuts for commands
+  s = status
+  d = diff
+  a = add
+  co = checkout
+  b = branch
+  l = log
+  f = fetch
+  r = reset
+  p = push
+
+  # Pimp-out log
+  # ============
+  # http://www.jukie.net/bart/blog/pimping-out-git-log
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[merge]
+	tool = vimdiff

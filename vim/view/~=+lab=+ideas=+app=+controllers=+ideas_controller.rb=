@@ -1,0 +1,120 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+nmap <buffer> gf <Plug>RailsTabFind
+nmap <buffer> f <Plug>RailsSplitFind
+nmap <buffer> [f <Plug>RailsAlternate
+nmap <buffer> ]f <Plug>RailsRelated
+nmap <buffer> gf <Plug>RailsFind
+nnoremap <buffer> <silent> <Plug>RailsTabFind :RTfind
+nnoremap <buffer> <silent> <Plug>RailsVSplitFind :RVfind
+nnoremap <buffer> <silent> <Plug>RailsSplitFind :RSfind
+nnoremap <buffer> <silent> <Plug>RailsFind :REfind
+nnoremap <buffer> <silent> <Plug>RailsRelated :R
+nnoremap <buffer> <silent> <Plug>RailsAlternate :A
+cnoremap <buffer> <expr>  fugitive#buffer().rev()
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=syntaxcomplete#Complete
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=^\\s*def\\s\\+\\(self\\.\\)\\=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'ruby'
+setlocal filetype=ruby
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^\\s*\\<\\(load\\|w*require\\)\\>
+setlocal includeexpr=RailsIncludeexpr()
+setlocal indentexpr=GetRubyIndent()
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=elsif,=when,=ensure,=rescue,==begin,==end
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=ri
+setlocal nolinebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=syntaxcomplete#Complete
+setlocal path=.,~/lab/ideas,~/lab/ideas/app,~/lab/ideas/app/models,~/lab/ideas/app/controllers,~/lab/ideas/app/helpers,~/lab/ideas/config,~/lab/ideas/lib,~/lab/ideas/app/views,~/lab/ideas/app/views/ideas,~/lab/ideas/public,~/lab/ideas/test,~/lab/ideas/test/unit,~/lab/ideas/test/functional,~/lab/ideas/test/integration,~/lab/ideas/spec,~/lab/ideas/spec/models,~/lab/ideas/spec/controllers,~/lab/ideas/spec/helpers,~/lab/ideas/spec/views,~/lab/ideas/spec/lib,~/lab/ideas/spec/requests,~/lab/ideas/spec/integration,~/lab/ideas/app/*,~/lab/ideas/vendor,~/lab/ideas/vendor/plugins/*/lib,~/lab/ideas/vendor/plugins/*/test,~/lab/ideas/vendor/rails/*/lib,~/lab/ideas/vendor/rails/*/test,/usr/local/lib/ruby/site_ruby/1.9.1,/usr/local/lib/ruby/site_ruby/1.9.1/i686-linux,/usr/local/lib/ruby/site_ruby,/usr/local/lib/ruby/vendor_ruby/1.9.1,/usr/local/lib/ruby/vendor_ruby/1.9.1/i686-linux,/usr/local/lib/ruby/vendor_ruby,/usr/local/lib/ruby/1.9.1,/usr/local/lib/ruby/1.9.1/i686-linux,/usr/local/lib/ruby/gems/1.9.1/gems/abstract-1.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/actionmailer-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/actionmailer-3.0.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activemodel-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activemodel-3.0.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activeresource-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activeresource-3.0.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/arel-1.0.1/lib,/usr/local/lib/ruby/gems/1.9.1/gems/arel-2.0.4/lib,/usr/local/lib/ruby/gems/1.9.1/gems/arel-2.0.6/lib,/usr/local/lib/ruby/gems/1.9.1/gems/authlogic-2.1.6/lib,/usr/local/lib/ruby/gems/1.9.1/gems/builder-2.1.2/lib,/usr/local/lib/ruby/gems/1.9.1/gems/builder-3.0.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.0.7/lib,/usr/local/lib/ruby/gems/1.9.1/gems/capybara-0.4.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/celerity-0.8.4/lib,/usr/local/lib/ruby/gems/1.9.1/gems/celerity-0.8.5/lib,/usr/local/lib/ruby/gems/1.9.1/gems/childprocess-0.1.4/lib,/usr/local/lib/ruby/gems/1.9.1/gems/columnize-0.3.2/lib,/usr/local/lib/ruby/gems/1.9.1/gems/configuration-1.2.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/cucumber-0.10.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/cucumber-0.9.4/lib,/usr/local/lib/ruby/gems/1.9.1/gems/cucumber-rails-0.3.2/lib,/usr/local/lib/ruby/gems/1.9.1/gems/culerity-0.2.12/lib,/usr/local/lib/ruby/gems/1.9.1/gems/daemon_controller-0.2.5/lib,/usr/local/lib/ruby/gems/1.9.1/gems/database_cleaner-0.6.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/diff-lcs-1.1.2/lib,/usr/local/lib/ruby/gems/1.9.1/gems/erubis-2.6.6/lib,/usr/local/lib/ruby/gems/1.9.1/gems/fastthread-1.0.7/ext,/usr/local/lib/ruby/gems/1.9.1/gems/fastthread-1.0.7/lib,/usr/local/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/ext,/usr/local/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib,/usr/local/lib/ruby/gems/1.9.1/gems/file-tail-1.0.5/lib,/usr/local/lib/ruby/gems/1.9.1/gems/gherkin-2.2.9/lib,/usr/local/lib/ruby/gems/1.9.1/gems/gherkin-2.3.2/lib,/usr/local/lib/ruby/gems/1.9.1/gems/i18n-0.4.2/lib,/usr/local/lib/ruby/gems/1.9.1/gems/i18n-0.5.0/lib,/usr/local/lib/ruby/gems/1.9.1/gems/json-1.4.6/ext,/usr/local/lib/ruby/gems/1.9.1/gems/json-1.4.6/ext/json/ext,/usr/local/lib/ruby/gems/1.9.1/gems/json-1.4.6/lib,/usr/local/lib/ruby/gems/1.9.1/gems/json_pure-1.4.6/lib,/usr/local/lib/ruby/gems/1.9.1/gems/launchy-0.3.7/lib,/usr/local/lib/ruby/gems/1.9.1/gems/linecache-0.43/lib,/usr/local/lib/ruby/gems/1.9.1/gems/mail-2.2.10/lib,/usr/local/lib/ruby/gems/1.9.1/gems/mail-2.2.11/lib,/usr/local/lib/ruby/gems/1.9.1/gems/mail-2.2.12/lib,/usr/local/lib/ruby/gems/1.9.1/gems/memcache-client-1.8.5/lib,/usr/local/lib/ruby/gems/1.9.1/gems/mime-types-1.16/lib,/usr/local/lib/ruby/gems/1.9.1/gems/mysql-2.8.1/ext,/usr/local/lib/ruby/gems/1.9.1/gems/mysql-2.8.1/lib,/usr/local/l
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%<%f\ %h%m%r%{rails#statusline()}%=%-14.(%l,%c%V%)\ %P
+setlocal suffixesadd=.rb,.rhtml,.erb,.rxml,.builder,.rjs,.mab,.liquid,.haml,.dryml,.mn,.yml,.csv,.rake,s.rb
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'ruby'
+setlocal syntax=ruby
+endif
+setlocal tabstop=2
+setlocal tags=~/lab/ideas/tmp/tags,./tags,./TAGS,tags,TAGS,~/lab/ideas/tags,~/lab/ideas/.git/ruby.tags,~/lab/ideas/.git/tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
