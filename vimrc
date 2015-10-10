@@ -1,42 +1,60 @@
-" This setting prevents vim from emulating the original vi's bugs and limitations.
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=700
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Prevent vim from emulating the original vi's bugs and limitations.
 set nocompatible
 
-"
-" Prettiness ******************************************************************
-"
-
-" Pathogen stuff (coffeescript, vimclojure, etc)
+" Load all bundles
 call pathogen#runtime_append_all_bundles()
-filetype off " from http://blog.darevay.com/2010/10/how-i-tamed-vimclojure/
-             " otherwise pathogen won't find this plugin!!
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 syntax on
-filetype plugin indent on
+set so=7
 
-" Colors!
 set t_Co=256 " This messes up old mac terminal
+colo molokai
 " desert, molokai, zenburn, ir_black are good.
+" wombat
+" wombat256
+" xoria256
 
-" Lucius
-" ======
 " let g:lucius_style="light"
-colo lucius
+" colo lucius
 
-" Solarized
-" =========
 " syntax enable
-" set background=light
+" set background=dark
 " let g:solarized_termcolors=256
 " colorscheme solarized
 
-" VimClojure
-let vimclojure#WantNailgun = 0 " Using slime instead
-let vimclojure#UseErrorBuffer = 1
-let vimclojure#HighlightBuiltins = 1
-let vimclojure#ParenRainbow = 1
-let vimclojure#DynamicHighlighting = 1
-
 " Line margins.
 set scrolloff=8
+
+" Show col number
+set ruler
+
+" Highlight long lines
+match ErrorMsg '\%>80v.\+'
 
 set hlsearch
 
@@ -53,17 +71,19 @@ set splitright
 " Lets vim set the title of the console
 set title
 
-set expandtab
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
-" but disable tab special chars in html and xml files
-autocmd filetype html,xml set listchars-=tab:>.
-
 " Paste/edit/normal modes
 set showmode
 
 " show matching brace/paren
 set showmatch
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
 
 "
 " Faster Interaction ***********************************************************
@@ -120,6 +140,15 @@ nnoremap <C-l> <C-w>l
 " When editing file requiring root privileges, but forgot to sudo
 cnoremap w!! w !sudo tee % >/dev/null
 
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
 "
 " Staying Safe & Staying Sane **************************************************
 "
@@ -128,12 +157,19 @@ cnoremap w!! w !sudo tee % >/dev/null
 autocmd BufWritePre * :%s/\s\+$//e
 
 " indentation and such
+set expandtab
 set autoindent
 set smartindent
 set ts=2 sts=2 et sw=2
 
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+" but disable tab special chars in html and xml files
+autocmd filetype html,xml set listchars-=tab:>.
+
 " Python specific settings
-autocmd FileType python set ts=4 sts=4 et sw=4
+autocmd filetype python set ts=4 sts=4 et sw=4
+autocmd filetype coffeescript set ts=2 sts=2 et sw=2
 
 " make vertical split open window to the right
 set splitright
@@ -149,6 +185,9 @@ au BufRead,BufNewFile *.erb set filetype=erb
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.coffee set filetype=coffee
 au! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
+au! BufRead,BufNewFile *.html.erb set filetype=eruby.html
+au! BufRead,BufNewFile *.hbs set filetype=handlebars.html
+au! BufRead,BufNewFile *.ex set filetype=elixir
 
 " Turn off that annoying bell
 set vb t_vb=
@@ -172,3 +211,46 @@ set undolevels=1000
 " Silently save folds.
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
+
+
+
+
+
+
+" Nerdtree
+
+" show hidden files in nerdtree
+let NERDTreeShowHidden=1
+" toggle with ctrl n
+map <C-n> :NERDTreeToggle<CR>
+
+
+
+
+
+
+" Status line
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+
+
+
+"" Helpers
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
+
+

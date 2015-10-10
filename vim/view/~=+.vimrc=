@@ -15,6 +15,7 @@ nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
+setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
 setlocal buflisted
@@ -23,11 +24,16 @@ setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
 setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
 setlocal commentstring=\"%s
 setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
 setlocal completefunc=
 setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
 setlocal define=
@@ -50,7 +56,7 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
+setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=0
@@ -60,11 +66,13 @@ setlocal includeexpr=
 setlocal indentexpr=GetVimIndent()
 setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,=end,=else,=cat,=fina,=END,0\\
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,#
+setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispwords=
 setlocal list
+setlocal nomacmeta
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
@@ -78,6 +86,7 @@ setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
+setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
@@ -91,7 +100,7 @@ setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=
 setlocal suffixesadd=
-setlocal swapfile
+setlocal noswapfile
 setlocal synmaxcol=3000
 if &syntax != 'vim'
 setlocal syntax=vim
@@ -100,17 +109,20 @@ setlocal tabstop=2
 setlocal tags=
 setlocal textwidth=78
 setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
 setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 121 - ((28 * winheight(0) + 28) / 56)
+let s:l = 256 - ((33 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-121
-normal! 016l
+256
+normal! 0
+lcd ~/
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
