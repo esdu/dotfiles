@@ -47,3 +47,6 @@
 
 [merge]
 	tool = vimdiff
+[core]
+	excludesfile = /Users/eddiedu/.gitignore_global
+	editor = /usr/bin/vim
