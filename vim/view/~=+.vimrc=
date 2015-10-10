@@ -116,6 +116,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
+<<<<<<< Updated upstream
 let s:l = 256 - ((33 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
@@ -123,6 +124,13 @@ normal! zt
 256
 normal! 0
 lcd ~/
+let s:l = 137 - ((31 * winheight(0) + 33) / 66)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+137
+normal! 041|
+lcd /src/trigger_mail
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

@@ -170,6 +170,7 @@ autocmd filetype html,xml set listchars-=tab:>.
 " Python specific settings
 autocmd filetype python set ts=4 sts=4 et sw=4
 autocmd filetype coffeescript set ts=2 sts=2 et sw=2
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " make vertical split open window to the right
 set splitright

@@ -1,7 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/eddiedu/dotfiles/vim/bundle'
-let g:netrw_dirhist_2='/Users/eddiedu'
-let g:netrw_dirhist_3='/Users/eddiedu/Downloads'
-let g:netrw_dirhist_4='/Users/eddiedu'
-let g:netrw_dirhist_5='/Users/eddiedu/Dropbox'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/src/trigger_mail/src/engine/templates/admin'
+let g:netrw_dirhist_2='/src/trigger_mail/src/mapreduce'

@@ -49,4 +49,7 @@
 	tool = vimdiff
 [core]
 	excludesfile = /Users/eddiedu/.gitignore_global
+[push]
+	default = simple
+[core]
 	editor = /usr/bin/vim
