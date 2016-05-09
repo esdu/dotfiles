@@ -54,7 +54,7 @@ set scrolloff=8
 set ruler
 
 " Highlight long lines
-match ErrorMsg '\%>80v.\+'
+"match ErrorMsg '\%>80v.\+'
 
 set hlsearch
 
@@ -147,7 +147,20 @@ cnoremap w!! w !sudo tee % >/dev/null
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ \ \ Line:\ %l
+
+" Status line
+" http://stackoverflow.com/questions/5375240/a-more-useful-statusline-in-vim
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%1*%4v\ %*
+"set statusline+=%*
+hi User1 guifg=#eea040 guibg=#222222
+hi User2 guifg=#dd3333 guibg=#222222
+hi User3 guifg=#ff66ff guibg=#222222
+hi User4 guifg=#a0ee40 guibg=#222222
+hi User5 guifg=#eeee40 guibg=#222222
 
 "
 " Staying Safe & Staying Sane **************************************************
@@ -230,15 +243,12 @@ map <C-n> :NERDTreeToggle<CR>
 
 
 
-" Status line
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Turned off syntastic cuz it's too strong for now...
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 
 
@@ -255,3 +265,13 @@ function! HasPaste()
 endfunction
 
 
+" Open all new windows to the right
+set splitright
+
+
+" Set CWD to whatever file is opened
+autocmd BufEnter * lcd %:p:h
+
+
+" Highlight current line
+set cursorline

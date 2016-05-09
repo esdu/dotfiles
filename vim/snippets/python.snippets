@@ -1,3 +1,11 @@
+snippet cmd
+	class ${1}(NamespaceAwareCommand):
+		def __init__(self, partner):
+			self.partner = partner
+
+		def execute(self):
+			${2}
+
 snippet #!
 	#!/usr/bin/python
 
